@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界记录大全 - 探索惊人的世界记录</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 导航栏样式 */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #1a2530);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #4CAF50;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #4CAF50;
+        }
+        
+        /* 英雄区域样式 */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1519791883288-dc8bd696e667?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        /* 分类筛选样式 */
+        .categories {
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .categories h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #4CAF50;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        /* 记录卡片样式 */
+        .records-container {
+            padding: 20px 0 50px;
+        }
+        
+        .records-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .record-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .record-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .record-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .record-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .record-card:hover .record-image img {
+            transform: scale(1.05);
+        }
+        
+        .record-content {
+            padding: 20px;
+        }
+        
+        .record-category {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #4CAF50;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .record-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .record-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        
+        .record-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 14px;
+        }
+        
+        .read-more {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4CAF50;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .read-more:hover {
+            color: #2e7d32;
+        }
+        
+        /* 加载和错误状态 */
+        .loading, .error {
+            text-align: center;
+            padding: 40px;
+            font-size: 20px;
+            color: #666;
+        }
+        
+        .error {
+            color: #e74c3c;
+        }
+        
+        /* 分页样式 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 10px;
+        }
+        
+        .pagination li a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .pagination li a:hover, .pagination li a.active {
+            background: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #4CAF50;
+        }
+        
+        .footer-column p {
+            margin-bottom: 20px;
+            color: #bbb;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #4CAF50;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #3a4b5c;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: #4CAF50;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #3a4b5c;
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 10px 15px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-trophy"></i>
+                    <span>世界记录大全</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">分类</a></li>
+                    <li><a href="#">最新记录</a></li>
+                    <li><a href="#">提交记录</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>探索世界上最惊人的记录</h1>
+            <p>从人类成就到自然奇观，发现并分享世界上最非凡的记录</p>
+        </div>
+    </section>
+
+    <!-- 分类筛选 -->
+    <section class="categories">
+        <div class="container">
+            <h2>记录分类</h2>
+            <div class="category-filters">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="人类成就">人类成就</button>
+                <button class="filter-btn" data-filter="自然世界">自然世界</button>
+                <button class="filter-btn" data-filter="科学技术">科学技术</button>
+                <button class="filter-btn" data-filter="艺术娱乐">艺术娱乐</button>
+                <button class="filter-btn" data-filter="体育运动">体育运动</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 记录展示 -->
+    <section class="records-container">
+        <div class="container">
+            <div class="records-grid" id="records-grid">
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i> 正在加载记录...
+                </div>
+            </div>
+            
+            <!-- 分页 -->
+            <ul class="pagination" id="pagination">
+                <li><a href="#"><i class="fas fa-chevron-left"></i></a></li>
+                <li><a href="#" class="active">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i></a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>关于世界记录大全</h3>
+                    <p>我们致力于记录和验证世界各地的非凡成就和自然奇观，为人们提供权威的世界记录信息。</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">记录分类</a></li>
+                        <li><a href="#">最新记录</a></li>
+                        <li><a href="#">提交记录</a></li>
+                        <li><a href="#">常见问题</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>热门类别</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">人类成就</a></li>
+                        <li><a href="#">自然世界</a></li>
+                        <li><a href="#">科学技术</a></li>
+                        <li><a href="#">艺术娱乐</a></li>
+                        <li><a href="#">体育运动</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>联系我们</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> info@worldrecords.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (123) 456-7890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Record Street, Knowledge City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 世界记录大全 - 所有权利 reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 从records.json获取数据
+        async function fetchRecords() {
+            try {
+                const response = await fetch('records.json');
+                if (!response.ok) {
+                    throw new Error('网络响应不正常');
+                }
+                const data = await response.json();
+                return data.records;
+            } catch (error) {
+                console.error('获取记录数据时出错:', error);
+                const recordsGrid = document.getElementById('records-grid');
+                recordsGrid.innerHTML = `
+                    <div class="error">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>无法加载记录数据，请稍后再试。</p>
+                        <button onclick="location.reload()" style="margin-top: 15px; padding: 10px 20px; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">重新加载</button>
+                    </div>
+                `;
+                return null;
+            }
+        }
+
+        // 动态生成记录卡片
+        function renderRecords(records) {
+            const recordsGrid = document.getElementById('records-grid');
+            
+            if (!records || records.length === 0) {
+                recordsGrid.innerHTML = '<div class="error">没有找到记录</div>';
+                return;
+            }
+            
+            recordsGrid.innerHTML = '';
+            
+            records.forEach(record => {
+                const recordCard = document.createElement('div');
+                recordCard.className = 'record-card';
+                
+                recordCard.innerHTML = `
+                    <div class="record-image">
+                        <img src="${record.image}" alt="${record.title}">
+                    </div>
+                    <div class="record-content">
+                        <span class="record-category">${record.category}</span>
+                        <h3 class="record-title">${record.title}</h3>
+                        <p class="record-description">${record.description}</p>
+                        <div class="record-meta">
+                            <span><i class="far fa-calendar"></i> ${record.date}</span>
+                            <span><i class="far fa-eye"></i> ${record.views.toLocaleString()}</span>
+                        </div>
+                        <a href="${record.article_url}" class="read-more">阅读更多 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                `;
+                
+                recordsGrid.appendChild(recordCard);
+            });
+        }
+
+        // 初始加载和数据获取
+        document.addEventListener('DOMContentLoaded', async function() {
+            const records = await fetchRecords();
+            
+            if (records) {
+                renderRecords(records);
+                
+                // 分类筛选功能
+                const filterButtons = document.querySelectorAll('.filter-btn');
+                
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        // 移除所有按钮的active类
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        
+                        // 为当前点击的按钮添加active类
+                        this.classList.add('active');
+                        
+                        const filter = this.getAttribute('data-filter');
+                        
+                        if (filter === 'all') {
+                            renderRecords(records);
+                        } else {
+                            const filteredRecords = records.filter(record => record.category === filter);
+                            renderRecords(filteredRecords);
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

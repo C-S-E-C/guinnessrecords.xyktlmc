@@ -1,0 +1,64 @@
+{
+  "records": [
+    {
+      "id": 1,
+      "title": "世界最高的人",
+      "category": "人类成就",
+      "description": "罗伯特·瓦德罗是有史以来最高的人，身高达到2.72米。",
+      "image": "https://images.unsplash.com/photo-1519244704-faccbcff61ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "date": "2023-05-15",
+      "views": 12500,
+      "article_url": "/records/tallest-person"
+    },
+    {
+      "id": 2,
+      "title": "最深的海洋点",
+      "category": "自然世界",
+      "description": "马里亚纳海沟的挑战者深渊是地球上海洋的最深点，深度达10,928米。",
+      "image": "https://images.unsplash.com/photo-1551823916-5c4f0f6e6c38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "date": "2023-04-22",
+      "views": 8900,
+      "article_url": "/records/deepest-ocean-point"
+    },
+    {
+      "id": 3,
+      "title": "最快的地面车辆",
+      "category": "科学技术",
+      "description": "超音速推进号是世界上最快的地面车辆，最高速度达到1228公里/小时。",
+      "image": "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "date": "2023-03-10",
+      "views": 15600,
+      "article_url": "/records/fastest-land-vehicle"
+    },
+    {
+      "id": 4,
+      "title": "最畅销的音乐专辑",
+      "category": "艺术娱乐",
+      "description": "迈克尔·杰克逊的《Thriller》是有史以来最畅销的音乐专辑，估计销量达6600万张。",
+      "image": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "date": "2023-02-28",
+      "views": 21000,
+      "article_url": "/records/best-selling-album"
+    },
+    {
+      "id": 5,
+      "title": "百米短跑世界记录",
+      "category": "体育运动",
+      "description": "乌塞恩·博尔特保持的9.58秒百米短跑世界记录，创造于2009年柏林世锦赛。",
+      "image": "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "date": "2023-01-15",
+      "views": 18700,
+      "article_url": "/records/100m-world-record"
+    },
+    {
+      "id": 6,
+      "title": "最古老的树",
+      "category": "自然世界",
+      "description": "玛士撒拉树是一棵已有4850多年历史的狐尾松，是世界上最古老的非克隆生物。",
+      "image": "https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "date": "2022-12-05",
+      "views": 7600,
+      "article_url": "/records/oldest-tree"
+    }
+  ]
+}
